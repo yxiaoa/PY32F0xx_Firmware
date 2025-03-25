@@ -104,4 +104,17 @@ void USART2_IRQHandler(void)
 	APP_Usart2IRQCallback(USART2);
 }
 
+void EXTI0_1_IRQHandler(void)
+{
+    /* Check if the interrupt is triggered by EXTI Line 1 */
+    if (__HAL_GPIO_EXTI_GET_IT(RADAR_WAKEUP_PIN) != RESET)
+    {
+        /* Clear the interrupt flag for EXTI Line 1 */
+        __HAL_GPIO_EXTI_CLEAR_IT(RADAR_WAKEUP_PIN);
+        
+        /* Call the GPIO EXTI callback function */
+        hal_gpio_exti_callback(RADAR_WAKEUP_PIN);
+    }
+}
+
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/
