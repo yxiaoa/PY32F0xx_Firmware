@@ -329,8 +329,8 @@ void APP_Usart2IRQCallback(USART_TypeDef *USARTx)
 	if ((LL_USART_IsActiveFlag_IDLE(USARTx) != RESET) && (LL_USART_IsEnabledIT_IDLE(USARTx) != RESET)) {
 		LL_USART_ClearFlag_IDLE(USARTx);
 		if (uart_module.rx_cnt > 0) {
-            uart_module.state = UART_STATE_RX_COMPLETE;
-        }
+			uart_module.state = UART_STATE_RX_COMPLETE;
+        	}
 	}
 }
 
